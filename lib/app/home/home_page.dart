@@ -1,24 +1,25 @@
 import 'dart:async';
+import 'package:_app_framework/services/app_settings_service.dart';
 import 'package:flutter/material.dart';
-import '../../services/app_settings_service.dart';
 import 'about_page.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  final AppSettingsService appSettingsService = AppSettingsService ();
+  const HomePage({super.key});
 
   Future<void> _onAbout(BuildContext context) async {
     await Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true, 
-        builder: (_) => AboutPage(),
+        builder: (_) => const AboutPage(),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final appSettingsService = Provider.of<AppSettingsService>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(appSettingsService.appName),

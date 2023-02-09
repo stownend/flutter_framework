@@ -10,8 +10,10 @@
  
 */
 
+import 'package:_app_framework/services/app_settings_service.dart';
 import 'package:_app_framework/services/color_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'app/home/home_page.dart';
 
@@ -19,14 +21,17 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
    MyApp({super.key});
-
-  final colorService = ColorService();
   
+   final colorService = ColorService();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(primarySwatch: MaterialColor(0xFF2196F3, colorService.colorSwatchShades)),
-      home: HomePage(),
+    return Provider<AppSettingsService>(
+      create: (context) => AppSettingsService(),
+      child: MaterialApp(
+        theme: ThemeData(primarySwatch: MaterialColor(0xFF2196F3, colorService.colorSwatchShades)),
+        home: const HomePage()
+      ),
     );
   }
 }

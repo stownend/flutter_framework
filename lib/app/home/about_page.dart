@@ -1,13 +1,13 @@
 import 'package:_app_framework/services/app_settings_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AboutPage extends StatelessWidget {
-  AboutPage({super.key});
-
-  final AppSettingsService appSettingsService = AppSettingsService ();
+  const AboutPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appSettingsService = Provider.of<AppSettingsService>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('About'),

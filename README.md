@@ -29,6 +29,7 @@ samples, guidance on mobile development, and a full API reference.
         flutter pub global run rename --appname "Your app displayname"
 
 - Next, replace any remaining instances of the whole word "_app_framwork" with the foldername of your app using the **Edit -> Replace in files...** option of VSCode
+- Update lib/services/app_settings_service.dart to match your requirements
 
 
 
