@@ -1,7 +1,5 @@
 /* TO DO
 
-  - Add to GitHub
-  - Test copy/rename
   - Add MultiProvider and use for appSettings and color services
   - Add a sample web api caller/service
   - Turn About Icon into a Hamburger
