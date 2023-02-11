@@ -1,6 +1,5 @@
 /* TO DO
 
-  - Add MultiProvider and use for appSettings and color services
   - Add a sample web api caller/service
   - Turn About Icon into a Hamburger
   - Add custom Icon
@@ -16,22 +15,32 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'app/home/home_page.dart';
+import 'app/material_app_builder.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+   const MyApp({super.key});
   
-   final colorService = ColorService();
-
   @override
   Widget build(BuildContext context) {
-    return Provider<AppSettingsService>(
-      create: (context) => AppSettingsService(),
-      child: MaterialApp(
-        theme: ThemeData(primarySwatch: MaterialColor(0xFF2196F3, colorService.colorSwatchShades)),
-        home: const HomePage()
-      ),
+    return MultiProvider(
+      providers: [
+        Provider<AppSettingsService>(
+          create: (_) => AppSettingsService(),
+        ),
+        Provider<ColorService>(
+          create: (_) => ColorService(),
+        )
+      ],
+      child: MaterialAppBuilder(builder: (context) {
+        final colorService = Provider.of<ColorService>(context, listen: false);
+
+        return MaterialApp(
+          theme: ThemeData(primarySwatch: MaterialColor(0xFF2196F3, colorService.colorSwatchShades)),
+          home: const HomePage()
+        );
+      }),
     );
   }
 }

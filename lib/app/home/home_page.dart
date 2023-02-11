@@ -23,16 +23,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(appSettingsService.appName),
-        leading: appSettingsService.appIconSmall,
-        actions: <Widget>[
-          IconButton(
+        leading: IconButton(
             icon: const Icon(
               Icons.help //Icons.more_vert,
             ),
             onPressed: () {
               _onAbout(context);
             },
-          )
+          ),
+        actions: <Widget>[
+          appSettingsService.appIconSmall,
         ],
         // actions: <Widget>[],
         //bottom: PreferredSize(
