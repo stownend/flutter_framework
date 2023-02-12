@@ -1,6 +1,8 @@
-import 'package:_app_framework/services/app_settings_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../services/app_settings_service.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -16,7 +18,7 @@ class AboutPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            appSettingsService.appIcon,
+            Image.asset("${(kDebugMode && kIsWeb)?"":"assets/"}${appSettingsService.appLogo}"),
             const SizedBox(height: 64),
             Text(
               appSettingsService.appName,

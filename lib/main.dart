@@ -1,21 +1,21 @@
 /* TO DO
 
+  - Add logging
   - Add a sample web api caller/service
   - Turn About Icon into a Hamburger
-  - Add custom Icon
 
   - Create PWA_framework branch
   - Add Web App capability
  
 */
 
-import 'package:_app_framework/services/app_settings_service.dart';
-import 'package:_app_framework/services/color_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'app/home/home_page.dart';
 import 'app/material_app_builder.dart';
+import 'services/app_settings_service.dart';
+import 'services/color_service.dart';
 
 void main() => runApp(const MyApp());
 

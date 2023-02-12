@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:_app_framework/services/app_settings_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../../services/app_settings_service.dart';
 import 'about_page.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(appSettingsService.appName),
-        leading: IconButton(
+        leading:  
+        //Image.asset("${(kDebugMode && kIsWeb)?"":"assets/"}${appSettingsService.appLogo}"),
+         IconButton(
             icon: const Icon(
               Icons.help //Icons.more_vert,
             ),
