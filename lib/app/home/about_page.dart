@@ -10,6 +10,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appSettingsService = Provider.of<AppSettingsService>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('About'),
