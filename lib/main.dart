@@ -1,10 +1,5 @@
 /* TO DO
 
-  - Turn About Icon into a Hamburger
-    - Page to test API call
-    - About page
-  - Add a sample web api caller/service
-  
   - Create PWA_framework branch
   - Add Web App capability
  

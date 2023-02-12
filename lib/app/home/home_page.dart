@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:_app_framework/app/TestPages/rest_api.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +14,15 @@ class HomePage extends StatelessWidget {
       MaterialPageRoute(
         fullscreenDialog: true, 
         builder: (_) => const AboutPage(),
+      ),
+    );
+  }
+
+  Future<void> _onRequestedRestApi(BuildContext context) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        fullscreenDialog: true, 
+        builder: (_) => const RestApi(),
       ),
     );
   }
@@ -71,8 +81,8 @@ class HomePage extends StatelessWidget {
               ListTile(
                 title: const Text('Test a REST API call'),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                  Navigator.pop(context);
+                  _onRequestedRestApi(context);
                 },
               ),
               ListTile(

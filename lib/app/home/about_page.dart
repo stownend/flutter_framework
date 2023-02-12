@@ -14,6 +14,12 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('About'),
+        leading: IconButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back), 
+        )
       ),
       body: Center(
         child: Column(

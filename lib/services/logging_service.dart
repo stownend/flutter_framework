@@ -22,6 +22,25 @@ class LoggingService {
       return Logger(printer: SimpleLogPrinter(caller.runtimeType.toString()));
     }
   }
+
+  Logger getLoggerNoCaller() {
+
+    if ((kDebugMode)) {
+      return Logger(
+        printer: PrettyPrinter(
+          methodCount: 2,
+          errorMethodCount: 5,
+          lineLength: 50,
+          colors: true,
+          printEmojis: true,
+          printTime: false,
+        )
+      );
+
+    } else {
+      return Logger(printer: SimpleLogPrinter(""));
+    }
+  }
 }
 
 class SimpleLogPrinter extends LogPrinter {
