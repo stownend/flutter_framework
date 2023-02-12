@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../../services/app_settings_service.dart';
 import 'about_page.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,20 +24,18 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(appSettingsService.appName),
-        leading:  
-        //Image.asset("${(kDebugMode && kIsWeb)?"":"assets/"}${appSettingsService.appLogo}"),
+        actions: <Widget>[
          IconButton(
             icon: const Icon(
-              Icons.help //Icons.more_vert,
+            Icons.person_2,
+              size: 32,
             ),
             onPressed: () {
               _onAbout(context);
             },
           ),
-        actions: <Widget>[
-          appSettingsService.appIconSmall,
+          
         ],
-        // actions: <Widget>[],
         //bottom: PreferredSize(
           //preferredSize: const Size.fromHeight(130.0),
           // child: Column(
@@ -46,6 +44,46 @@ class HomePage extends StatelessWidget {
           //     const SizedBox(height: 16),
           //   ],
           // ),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              SizedBox(
+                height: 64.0,
+                child: DrawerHeader(
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: TextButton(
+                    style: const ButtonStyle(
+                      alignment: Alignment.centerLeft, // <-- had to set alignment
+                    ),
+                    child: const Text("Quick Access", 
+                      style: TextStyle(color: Colors.white)
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              ),
+              ListTile(
+                title: const Text('Test a REST API call'),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+              ListTile(
+                title: const Text('About'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _onAbout(context);
+                },
+              ),
+            ]
+          )
         ),
       );
   }

@@ -1,8 +1,10 @@
 /* TO DO
 
-  - Add a sample web api caller/service
   - Turn About Icon into a Hamburger
-
+    - Page to test API call
+    - About page
+  - Add a sample web api caller/service
+  
   - Create PWA_framework branch
   - Add Web App capability
  
@@ -47,6 +49,7 @@ class MyApp extends StatelessWidget {
 
         final logger = loggingService.getLogger(this);
         logger.d("A test debug message");
+        logger.i("A test info message");
         logger.e("A test error message");
 
         try {

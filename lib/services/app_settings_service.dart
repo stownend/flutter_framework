@@ -8,7 +8,7 @@ class AppSettingsService {
   final String appLogo = "images/icon.png";
 
   // Icon not used at present, prefer appLogo image
-  static const IconData iconData = Icons.webhook_sharp;
+  static const IconData iconData = Icons.person_2;
   final Icon appIcon = const Icon(iconData, size: 64);  
   final Icon appIconSmall = const Icon(iconData, size: 32);
 }
