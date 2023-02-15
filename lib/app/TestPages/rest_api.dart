@@ -1,12 +1,12 @@
 import 'dart:async';
 
-
 import 'package:_app_framework/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/us_data.dart';
 import '../../services/logging_service.dart';
+import '../home/my_scaffold.dart';
 
 
 class RestApi extends StatefulWidget {
@@ -39,16 +39,7 @@ class RestApiState extends State<RestApi> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Rest API Test'),
-        leading: IconButton(
-            onPressed: (){
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back), 
-        )
-      ),
+    return MyScaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -57,7 +48,12 @@ class RestApiState extends State<RestApi> {
             future: futureUSData,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data!.data[3].toString());
+                return  Column(
+                  children: [
+                    Text("Test a Rest API", style: Theme.of(context).textTheme.headlineMedium),
+                    Text(snapshot.data!.data[3].toString())
+                  ]
+                );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/app_settings_service.dart';
+import 'my_scaffold.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -11,16 +12,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final appSettingsService = Provider.of<AppSettingsService>(context, listen: false);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('About'),
-        leading: IconButton(
-            onPressed: (){
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back), 
-        )
-      ),
+    return MyScaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
