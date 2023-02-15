@@ -1,3 +1,4 @@
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -10,6 +11,9 @@ import 'app/material_app_builder.dart';
 import 'services/app_settings_service.dart';
 import 'services/color_service.dart';
 import 'services/logging_service.dart';
+import 'app/pages/browse_page.dart';
+import 'app/pages/search_page.dart';
+import 'app/pages/my_sites_page.dart';
 
 void main() {
   Logger.level = kDebugMode ? Level.verbose :  Level.info;
@@ -55,7 +59,11 @@ class MyApp extends StatelessWidget {
           routes: {
             "/home": (_) => const HomePage(),
             "/testRestAPI": (_) => const RestApi(),
-            "/about": (_) => const AboutPage()
+            "/about": (_) => const AboutPage(),
+
+            "/browse": (_) => const BrowsePage(),
+            "/search": (_) => const SearchPage(),
+            "/mySites": (_) => const MySitesPage(),
           }
         );
       }),
