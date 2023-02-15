@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/app_settings_service.dart';
+import '../../services/color_service.dart';
 
 class MyScaffold extends StatelessWidget {
-  final Widget body;
 
-  const MyScaffold({super.key, required this.body});
+  const MyScaffold({super.key, required this.body, this.navIndex});
+  final Widget body;
+  final int? navIndex;
 
   @override
   Widget build(BuildContext context) {
     final appSettingsService = Provider.of<AppSettingsService>(context, listen: false);
-    
+    final colorService = Provider.of<ColorService>(context, listen: false);
+
     return Scaffold(
 
       appBar: AppBar(
@@ -62,55 +65,48 @@ class MyScaffold extends StatelessWidget {
         ],
       ),
 
-/*
-      drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              SizedBox(
-                height: 64.0,
-                child: DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,
-                  ),
-                  child: TextButton(
-                    style: const ButtonStyle(
-                      alignment: Alignment.centerLeft, // <-- had to set alignment
-                    ),
-                    child: const Text("Quick Access", 
-                      style: TextStyle(color: Colors.white)
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-              ),
-              ListTile(
-                title: const Text('Home'),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, "/home");
-                },
-              ),
-              ListTile(
-                title: const Text('Test a REST API call'),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, "/testRestAPI");
-                },
-              ),
-              ListTile(
-                title: const Text('About'),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, "/about");
-                },
-              ),
-            ]
-          )
-      ),
-      */
+      bottomNavigationBar: BottomNavigationBar(
+          iconSize: 40,
+
+          backgroundColor: MaterialColor(0xFF2196F3, colorService.colorSwatchShades),
+          type: BottomNavigationBarType.fixed, // Prevents background going to white when "shifting" e.g. more than 3 icons
+
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Colors.amberAccent,
+          currentIndex: navIndex?? 0,
+
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_tree),
+              label: 'Browse',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.star),
+              label: 'My Sites',
+            ),
+          ],
+
+          onTap: (index)
+          {
+              if(index == 0){
+                Navigator.pushNamed(context, "/home");
+              }else if(index == 1){
+                Navigator.pushNamed(context, "/browse");
+              }else if(index == 2){
+                  Navigator.pushNamed(context, "/search");
+              }else if(index == 3){
+                  Navigator.pushNamed(context, "/mySites");
+              }
+          },         //New        
+        ),
       body: body
     );
   }
