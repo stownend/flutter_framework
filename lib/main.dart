@@ -1,16 +1,11 @@
-/* TO DO
-
-  - Create PWA_framework branch
-  - Add Web App capability
- 
-*/
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
+import 'app/TestPages/rest_api.dart';
 import 'app/home/home_page.dart';
+import 'app/home/about_page.dart';
 import 'app/material_app_builder.dart';
 import 'services/app_settings_service.dart';
 import 'services/color_service.dart';
@@ -53,10 +48,15 @@ class MyApp extends StatelessWidget {
           logger.e("A test error message with error", ex, st);
         }
         
-
         return MaterialApp(
           theme: ThemeData(primarySwatch: MaterialColor(0xFF2196F3, colorService.colorSwatchShades)),
-          home: const HomePage()
+          debugShowCheckedModeBanner: false,
+          initialRoute: "/home",
+          routes: {
+            "/home": (_) => const HomePage(),
+            "/testRestAPI": (_) => const RestApi(),
+            "/about": (_) => const AboutPage()
+          }
         );
       }),
     );
