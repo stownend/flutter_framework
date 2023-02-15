@@ -1,9 +1,9 @@
 {
-    "name": "_app_framework",
-    "short_name": "_app_framework",
+    "name": "PWA Framework Splash Screen Title",
+    "short_name": "PWA Framework Icon Title",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
+    "background_color": "#FAFAFA",
     "theme_color": "#0175C2",
     "description": "A new Flutter project.",
     "orientation": "portrait-primary",
