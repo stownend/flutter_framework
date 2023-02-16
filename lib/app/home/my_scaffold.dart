@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/app_settings_service.dart';
-import '../../services/color_service.dart';
 
 class MyScaffold extends StatelessWidget {
 
-  const MyScaffold({super.key, required this.body, this.navIndex});
+  const MyScaffold({super.key, required this.body, this.navName});
   final Widget body;
-  final int? navIndex;
+  final String? navName;
+
 
   @override
   Widget build(BuildContext context) {
     final appSettingsService = Provider.of<AppSettingsService>(context, listen: false);
-    final colorService = Provider.of<ColorService>(context, listen: false);
+    //final colorService = Provider.of<ColorService>(context, listen: false);
 
     return Scaffold(
 
       appBar: AppBar(
-        title: Text(appSettingsService.appName),
+        title: Text("${appSettingsService.appName} ${navName != null ? ": $navName" : ""}"),
         actions: <Widget>[
           PopupMenuButton(
           // add icon, by default "3 dot" icon
@@ -66,48 +66,41 @@ class MyScaffold extends StatelessWidget {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
-          iconSize: 40,
+          iconSize: 24,
 
-          backgroundColor: MaterialColor(0xFF2196F3, colorService.colorSwatchShades),
+          //backgroundColor: MaterialColor(0xFF2196F3, colorService.colorSwatchShades),
           type: BottomNavigationBarType.fixed, // Prevents background going to white when "shifting" e.g. more than 3 icons
 
-          unselectedItemColor: Colors.white,
-          selectedItemColor: Colors.amberAccent,
-          currentIndex: navIndex?? 0,
+          unselectedItemColor: Colors.grey[500],
+          //selectedItemColor: Colors.amberAccent,
+          currentIndex: appSettingsService.getRouteIndexByUiName(navName?? "Home"),
 
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+              icon: appSettingsService.getRouteByIndex(0).icon,
+              label: appSettingsService.getRouteByIndex(0).uiName,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.account_tree),
-              label: 'Browse',
+              icon: appSettingsService.getRouteByIndex(1).icon,
+              label: appSettingsService.getRouteByIndex(1).uiName,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Search',
+              icon: appSettingsService.getRouteByIndex(2).icon,
+              label: appSettingsService.getRouteByIndex(2).uiName,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.star),
-              label: 'My Sites',
+              icon: appSettingsService.getRouteByIndex(3).icon,
+              label: appSettingsService.getRouteByIndex(3).uiName,
             ),
           ],
 
           onTap: (index)
           {
-              if(index == 0){
-                Navigator.pushNamed(context, "/home");
-              }else if(index == 1){
-                Navigator.pushNamed(context, "/browse");
-              }else if(index == 2){
-                  Navigator.pushNamed(context, "/search");
-              }else if(index == 3){
-                  Navigator.pushNamed(context, "/mySites");
-              }
-          },         //New        
+              Navigator.pushNamed(context, appSettingsService.getRouteByIndex(index).routeName);
+          },
         ),
       body: body
     );
   }
 }
+

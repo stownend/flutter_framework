@@ -9,7 +9,7 @@ class MySitesPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MyScaffold(
-      navIndex: 3,
+      navName: "My Sites",
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
