@@ -9,7 +9,7 @@ class BrowsePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MyScaffold(
-      navIndex: 1,
+      navName: "Browse",
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

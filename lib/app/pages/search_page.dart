@@ -9,7 +9,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MyScaffold(
-      navIndex: 2,
+      navName: "Search",
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
