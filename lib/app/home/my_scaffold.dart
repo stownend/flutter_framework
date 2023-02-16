@@ -66,30 +66,30 @@ class MyScaffold extends StatelessWidget {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
-          iconSize: 40,
+          iconSize: 24,
 
-          backgroundColor: MaterialColor(0xFF2196F3, colorService.colorSwatchShades),
+          //backgroundColor: MaterialColor(0xFF2196F3, colorService.colorSwatchShades),
           type: BottomNavigationBarType.fixed, // Prevents background going to white when "shifting" e.g. more than 3 icons
 
-          unselectedItemColor: Colors.white,
-          selectedItemColor: Colors.amberAccent,
+          unselectedItemColor: Colors.grey[500],
+          //selectedItemColor: Colors.amberAccent,
           currentIndex: navIndex?? 0,
 
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home_outlined),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.account_tree),
+              icon: Icon(Icons.account_tree_outlined),
               label: 'Browse',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.search_outlined),
               label: 'Search',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.star),
+              icon: Icon(Icons.star_outline),
               label: 'My Sites',
             ),
           ],
