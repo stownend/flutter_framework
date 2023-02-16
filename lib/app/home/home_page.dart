@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MyScaffold(
-      navName: "home",
+      navName: "Home",
       body: Column(
         children: [
           Text("Home Page", style: Theme.of(context).textTheme.headlineMedium)
