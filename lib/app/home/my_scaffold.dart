@@ -96,7 +96,7 @@ class MyScaffold extends StatelessWidget {
 
           onTap: (index)
           {
-              Navigator.pushNamed(context, appSettingsService.getRouteByIndex(index).routeName);
+              Navigator.pushNamed(context, appSettingsService.getRouteByIndex(index).routeName, arguments: "Arg sent from MyScaffold");
           },
         ),
       body: body

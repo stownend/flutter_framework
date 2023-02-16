@@ -8,6 +8,8 @@ class BrowsePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final args = ModalRoute.of(context)!.settings.arguments as String;
+
     return MyScaffold(
       navName: "Browse",
       body: Center(
@@ -15,7 +17,7 @@ class BrowsePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Browse...",
+              "Browse...$args",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
